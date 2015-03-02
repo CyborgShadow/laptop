@@ -18,7 +18,7 @@ Requirements
 I support clean installations of these operating systems:
 
 * [OS X Yosemite (10.10)](https://www.apple.com/osx/)
-* [OS X Mavericks (10.9)](https://itunes.apple.com/us/app/os-x-mavericks/id675248567)
+* OS X Mavericks (10.9)
 
 Older versions may work but aren't regularly tested. Bug reports for older
 versions are welcome.
