@@ -1,5 +1,6 @@
 Laptop
 ======
+[![Build Status](https://travis-ci.org/monfresh/laptop.svg)](https://travis-ci.org/monfresh/laptop)
 
 Laptop is a script to set up an OS X computer for web development.
 
