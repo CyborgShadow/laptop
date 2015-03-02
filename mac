@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Welcome to the 18F laptop script!
+# Welcome to the monfresh laptop script!
 # Be prepared to turn your laptop (or desktop)
 # into an awesome development machine.
 
@@ -74,7 +74,7 @@ brew_is_upgradable() {
 }
 
 brew_tap_is_installed() {
-  brew tap | ag "$1" > /dev/null
+  brew tap | grep -Fqx "$1"
 }
 
 brew_tap() {
@@ -133,32 +133,17 @@ brew update
 
 brew_install_or_upgrade 'git'
 
-brew_install_or_upgrade 'the_silver_searcher'
-
 brew_tap 'gapple/services'
 
 brew_install_or_upgrade 'postgresql'
 fancy_echo 'Restarting postgres...'
 brew services restart postgresql
 
-brew_install_or_upgrade 'redis'
-fancy_echo 'Restarting redis...'
-brew services restart redis
-
-brew_install_or_upgrade 'imagemagick'
 brew_install_or_upgrade 'qt'
 
 brew_install_or_upgrade 'hub'
 # shellcheck disable=SC2016
 append_to_file "$HOME/.zshrc" 'eval "$(hub alias -s)"'
-
-brew_install_or_upgrade 'node'
-brew_install_or_upgrade 'python'
-
-if [ -z "$(which virtualenv)" ]; then
-  fancy_echo 'Installing Virtualenv...'
-  pip install virtualenv
-fi
 
 append_to_file "$HOME/.gemrc" 'gem: --no-document'
 
@@ -191,10 +176,8 @@ brew_install_or_upgrade 'brew-cask'
 
 brew_tap 'caskroom/versions'
 
-brew_cask_install 'cloud'
 brew_cask_install 'flux'
 brew_cask_install 'github'
-brew_cask_install 'slack'
 brew_cask_install 'sublime-text3'
 
 if [ -f "$HOME/.laptop.local" ]; then
