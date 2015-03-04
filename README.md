@@ -45,6 +45,7 @@ bash mac 2>&1 | tee ~/laptop.log && source ~/.rvm/scripts/rvm
 
 I also have more [detailed instructions with a video][video] in the Wiki.
 
+[Spotlight]: https://support.apple.com/en-us/HT204014
 [video]: https://github.com/monfresh/laptop/wiki/Detailed-installation-instructions-with-video
 
 Debugging
