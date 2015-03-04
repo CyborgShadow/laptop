@@ -27,7 +27,15 @@ versions are welcome.
 Install
 -------
 
-Download, review, then execute the script:
+Begin by opening the Terminal application on your Mac. The easiest way to open
+an application in OS X is to search for it via [Spotlight]. The default
+keyboard shortcut for invoking Spotlight is `command-Space`. Once Spotlight
+is up, just start typing the first few letters of the app you are looking for,
+and once it appears, press `return` to launch it.
+
+In your Terminal window, copy and paste each of these three commands one at a
+time, then press `return` after each one to download, review, and execute the
+script respectively:
 
 ```sh
 curl --remote-name https://raw.githubusercontent.com/monfresh/laptop/master/mac
