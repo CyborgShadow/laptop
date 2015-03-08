@@ -141,7 +141,7 @@ Credits
 -------
 
 This laptop script is inspired by
-[Thoughbot's laptop](https://github.com/thoughtbot/laptop) script.
+[thoughbot's laptop](https://github.com/thoughtbot/laptop) script.
 
 ### Public domain
 
