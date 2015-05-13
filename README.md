@@ -52,7 +52,7 @@ If you don't already have it installed, GitHub for Mac will launch
 automatically at the end of the script so you can set up everything you'll
 need to push code to GitHub.
 
-Once the script is done, it's a good idea to quit and relaunch Terminal.
+Once the script is done, quit and relaunch Terminal.
 
 More [detailed instructions with a video][video] are available in the Wiki.
 
@@ -103,12 +103,61 @@ What it sets up
 It should take less than 15 minutes to install (depends on your machine and
 internet connection).
 
+The script also lightly customizes your Zsh prompt so that it displays your
+current directory in orange, followed by the current Ruby version or gemset in 
+green, and sets the prompt character to `$`. It also allows you to easily
+distinguish directories from files when running `ls` by displaying directories
+in a different color. Below is a screenshot showing what the colors look like
+when using the default Terminal white background, the Solarized Dark theme, and the Solarized Light theme.
+
+![Terminal screenshots](http://cl.ly/image/19022S0q3H1b/download/Image%202015-05-12%20at%2011.31.04%20PM.png)
+
+If you want to use the [Solarized](http://ethanschoonover.com/solarized) 
+themes, run the following commands in your Terminal:
+```bash
+cd ~
+
+curl --remote-name https://raw.githubusercontent.com/tomislav/osx-terminal.app-colors-solarized/master/Solarized%20Dark.terminal
+
+curl --remote-name https://raw.githubusercontent.com/tomislav/osx-terminal.app-colors-solarized/master/Solarized%20Light.terminal
+
+open Solarized%20Dark.terminal
+
+open Solarized%20Light.terminal
+```
+
+This will add the Solarized themes to your Terminal's Profiles, and if you want to set one of them as the default, go to your Terminal's Preferences,
+click on the Settings tab, scroll down to the Solarized Profile, click on it,
+then click the Default button. When you open a new window or tab (or if you quit and relaunch Terminal), it will use the Solarized theme.
+
+If you want to try out different prompt colors other than orange and green,
+open your `.zshrc` in Sublime Text:
+
+```sh
+subl ~/.zshrc
+```
+
+Then in the line that starts with `precmd`, replace `{166}` and `{65}` with
+any of the 256 possible [Xterm colors](http://upload.wikimedia.org/wikipedia/commons/9/95/Xterm_color_chart.png).
+Save the file, then open a new Terminal window or tab to see the changes.
+
+
 Customize in `~/.laptop.local`
 ------------------------------
+```sh
+# Go to your OS X user's root directory
+cd ~
+
+# Download the sample file to your computer
+curl --remote-name https://raw.githubusercontent.com/monfresh/laptop/master/.laptop.local
+
+# open the file in Sublime Text
+subl .laptop.local
+```
 
 Your `~/.laptop.local` is run at the end of the `mac` script.
-Put your customizations there. This repo already contains a `.laptop.local`
-you can use to get started. It lets you install the following tools
+Put your customizations there. You can use the `.laptop.local` you downloaded
+above to get started. It lets you install the following tools
 (commented out by default):
 
 * [Atom] - GitHub's open source text editor
@@ -141,13 +190,6 @@ Laptop functions such as `fancy_echo`, `brew_install_or_upgrade`,
 `gem_install_or_update`, and `brew_cask_install` can be used in your
 `~/.laptop.local`.
 
-```sh
-# Go to your OS X user's root directory
-cd ~
-
-# Download the sample file to your computer
-curl --remote-name https://raw.githubusercontent.com/monfresh/laptop/master/.laptop.local
-```
 
 Credits
 -------
