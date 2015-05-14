@@ -59,15 +59,6 @@ More [detailed instructions with a video][video] are available in the Wiki.
 [Spotlight]: https://support.apple.com/en-us/HT204014
 [video]: https://github.com/monfresh/laptop/wiki/Detailed-installation-instructions-with-video
 
-Debugging
----------
-
-Your last Laptop run will be saved to `~/laptop.log`. Read through it to see if
-you can debug the issue yourself. If not, copy the lines where the script
-failed into a [new GitHub
-Issue](https://github.com/monfresh/laptop/issues/new) for me. Or, attach the
-whole log file as an attachment.
-
 What it sets up
 ---------------
 
@@ -104,7 +95,7 @@ It should take less than 15 minutes to install (depends on your machine and
 internet connection).
 
 The script also lightly customizes your Zsh prompt so that it displays your
-current directory in orange, followed by the current Ruby version or gemset in 
+current directory in orange, followed by the current Ruby version or gemset in
 green, and sets the prompt character to `$`. It also allows you to easily
 distinguish directories from files when running `ls` by displaying directories
 in a different color. Below is a screenshot showing what the colors look like
@@ -112,7 +103,7 @@ when using the default Terminal white background, the Solarized Dark theme, and 
 
 ![Terminal screenshots](http://cl.ly/image/19022S0q3H1b/download/Image%202015-05-12%20at%2011.31.04%20PM.png)
 
-If you want to use the [Solarized](http://ethanschoonover.com/solarized) 
+If you want to use the [Solarized](http://ethanschoonover.com/solarized)
 themes, run the following commands in your Terminal:
 ```bash
 cd ~
@@ -190,6 +181,14 @@ Laptop functions such as `fancy_echo`, `brew_install_or_upgrade`,
 `gem_install_or_update`, and `brew_cask_install` can be used in your
 `~/.laptop.local`.
 
+Debugging
+---------
+
+Your last Laptop run will be saved to a file called `laptop.log` in your home
+folder. Read through it to see if you can debug the issue yourself. If not,
+copy the lines where the script failed into a
+[new GitHub Issue](https://github.com/monfresh/laptop/issues/new) for me.
+Or, attach the whole log file as an attachment.
 
 Credits
 -------
