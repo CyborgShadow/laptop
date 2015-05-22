@@ -153,7 +153,7 @@ append_to_file "$HOME/.gemrc" 'gem: --no-document'
 if ! command -v rbenv >/dev/null; then
   if ! command -v rvm >/dev/null; then
     fancy_echo 'Installing RVM and the latest Ruby...'
-    curl -L https://get.rvm.io | bash -s stable --ruby --auto-dotfiles --autolibs=enable --with-gems="bundler"
+    curl -L https://get.rvm.io | bash -s stable --ruby --auto-dotfiles --autolibs=enable
     . ~/.rvm/scripts/rvm
   else
     local_version="$(rvm -v 2> /dev/null | awk '$2 != ""{print $2}')"
