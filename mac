@@ -23,7 +23,7 @@ append_to_file() {
     fi
   fi
 
-  if ! grep -Fqs "$text" "$file"; then
+  if ! grep -qs "^$text$" "$file"; then
     printf "\n%s\n" "$text" >> "$file"
   fi
 }
@@ -193,6 +193,7 @@ if [ -f "$HOME/.laptop.local" ]; then
 fi
 
 append_to_file "$HOME/.rvmrc" 'rvm_auto_reload_flag=2'
+append_to_file "$HOME/.rvm/gemsets/global.gems" 'bundler'
 
 # display pwd in orange, current ruby version or gemset in green,
 # and set prompt character to $
