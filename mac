@@ -204,6 +204,11 @@ append_to_file "$HOME/.zshrc" 'precmd () { PS1="%{%F{166}%}[%~] %{%F{65}%}$(rvm-
 append_to_file "$HOME/.zshrc" 'export CLICOLOR=1;'
 append_to_file "$HOME/.zshrc" 'export LSCOLORS=exfxcxdxbxegedabagacad;'
 
-if [ ! -f "$HOME/.ssh/github_rsa.pub" ]; then
+if app_is_installed 'GitHub'; then
+  fancy_echo "It looks like you've already configured your GitHub SSH keys."
+  fancy_echo "If not, you can do it by signing in to the GitHub app on your Mac."
+elif [ ! -f "$HOME/.ssh/github_rsa.pub" ]; then
   open ~/Applications/GitHub.app
 fi
+
+fancy_echo 'All done!'
