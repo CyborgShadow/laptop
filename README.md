@@ -70,8 +70,8 @@ What it sets up
 * [Homebrew Cask] for quickly installing Mac apps from the command line
 * [Homebrew Services] so you can easily stop, start, and restart services
 * [hub] for interacting with the GitHub API
+* [PhantomJS] for headless website testing
 * [Postgres] for storing relational data
-* [Qt] for headless JavaScript testing via Capybara Webkit
 * [RVM] for managing Ruby versions (includes the latest [Ruby])
 * [Sublime Text 3] for coding all the things
 * [Zsh] as your shell
@@ -84,8 +84,8 @@ What it sets up
 [Homebrew Cask]: http://caskroom.io/
 [Homebrew Services]: https://github.com/gapple/homebrew-services
 [hub]: https://github.com/github/hub
+[PhantomJS]: http://phantomjs.org/
 [Postgres]: http://www.postgresql.org/
-[Qt]: http://qt-project.org/
 [Ruby]: https://www.ruby-lang.org/en/
 [RVM]: https://github.com/wayneeseguin/rvm
 [Sublime Text 3]: http://www.sublimetext.com/3
