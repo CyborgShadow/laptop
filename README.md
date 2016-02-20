@@ -74,7 +74,7 @@ What it sets up
 
 * [Bundler] for managing Ruby gems
 * [Flux] for adjusting your Mac's display color so you can sleep better
-* [GitHub for Mac] for setting up your SSH keys automatically
+* [GitHub Desktop] for setting up your SSH keys automatically
 * [Heroku Toolbelt] for deploying and managing Heroku apps
 * [Homebrew] for managing operating system libraries
 * [Homebrew Cask] for quickly installing Mac apps from the command line
@@ -89,7 +89,7 @@ What it sets up
 
 [Bundler]: http://bundler.io/
 [Flux]: https://justgetflux.com/
-[GitHub for Mac]: https://mac.github.com/
+[GitHub Desktop]: https://desktop.github.com/
 [Heroku Toolbelt]: https://toolbelt.heroku.com/
 [Homebrew]: http://brew.sh/
 [Homebrew Cask]: http://caskroom.io/
