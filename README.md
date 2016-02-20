@@ -18,7 +18,8 @@ Requirements
 
 I support clean installations of these operating systems:
 
-* [OS X Yosemite (10.10)](https://www.apple.com/osx/)
+* [OS X El Capitan (10.11)](https://www.apple.com/osx/)
+* OS X Yosemite (10.10)
 * OS X Mavericks (10.9)
 
 Older versions may work but aren't regularly tested. Bug reports for older
@@ -58,6 +59,15 @@ More [detailed instructions with a video][video] are available in the Wiki.
 
 [Spotlight]: https://support.apple.com/en-us/HT204014
 [video]: https://github.com/monfresh/laptop/wiki/Detailed-installation-instructions-with-video
+
+Debugging
+---------
+
+Your last Laptop run will be saved to a file called `laptop.log` in your home
+folder. Read through it to see if you can debug the issue yourself. If not,
+copy the entire contents of `laptop.log` into a
+[new GitHub Issue](https://github.com/monfresh/laptop/issues/new) for me.
+Or, attach the whole log file as an attachment.
 
 What it sets up
 ---------------
@@ -182,14 +192,7 @@ Laptop functions such as `fancy_echo`, `brew_install_or_upgrade`,
 `gem_install_or_update`, and `brew_cask_install` can be used in your
 `~/.laptop.local`.
 
-Debugging
----------
 
-Your last Laptop run will be saved to a file called `laptop.log` in your home
-folder. Read through it to see if you can debug the issue yourself. If not,
-copy the lines where the script failed into a
-[new GitHub Issue](https://github.com/monfresh/laptop/issues/new) for me.
-Or, attach the whole log file as an attachment.
 
 Credits
 -------
