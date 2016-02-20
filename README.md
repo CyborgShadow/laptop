@@ -80,8 +80,7 @@ What it sets up
 * [Homebrew Cask] for quickly installing Mac apps from the command line
 * [Homebrew Services] so you can easily stop, start, and restart services
 * [hub] for interacting with the GitHub API
-* [PhantomJS] for headless website testing (unless on El Capitan, due to
-[this bug](https://github.com/Homebrew/homebrew/issues/42249))
+* [PhantomJS] for headless website testing
 * [Postgres] for storing relational data
 * [RVM] for managing Ruby versions (includes the latest [Ruby])
 * [Sublime Text 3] for coding all the things
