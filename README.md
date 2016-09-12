@@ -34,12 +34,13 @@ keyboard shortcut for invoking Spotlight is `command-Space`. Once Spotlight
 is up, just start typing the first few letters of the app you are looking for,
 and once it appears, press `return` to launch it.
 
-In your Terminal window, copy and paste each of these two commands one at a
-time, then press `return` after each one to download and execute the
-script, respectively:
+In your Terminal window, copy and paste each of these three commands one at a
+time, then press `return` after each one. The first two commands download the
+files the script needs to run, and the third command executes the script.
 
 ```sh
 curl --remote-name https://raw.githubusercontent.com/monfresh/laptop/master/mac
+curl --remote-name https://raw.githubusercontent.com/monfresh/laptop/master/Brewfile
 bash mac 2>&1 | tee ~/laptop.log && source ~/.rvm/scripts/rvm
 ```
 
@@ -53,7 +54,7 @@ If you don't already have it installed, GitHub for Mac will launch
 automatically at the end of the script so you can set up everything you'll
 need to push code to GitHub.
 
-Once the script is done, quit and relaunch Terminal.
+**Once the script is done, quit and relaunch Terminal.**
 
 More [detailed instructions with a video][video] are available in the Wiki.
 
@@ -92,7 +93,7 @@ What it sets up
 [Heroku Toolbelt]: https://toolbelt.heroku.com/
 [Homebrew]: http://brew.sh/
 [Homebrew Cask]: http://caskroom.io/
-[Homebrew Services]: https://github.com/gapple/homebrew-services
+[Homebrew Services]: https://github.com/Homebrew/homebrew-services
 [hub]: https://github.com/github/hub
 [PhantomJS]: http://phantomjs.org/
 [Postgres]: http://www.postgresql.org/
@@ -143,8 +144,8 @@ any of the 256 possible [Xterm colors](http://upload.wikimedia.org/wikipedia/com
 Save the file, then open a new Terminal window or tab to see the changes.
 
 
-Customize in `~/.laptop.local`
-------------------------------
+Customize in `~/.laptop.local` and `Brewfile`
+---------------------------------------------
 ```sh
 # Go to your OS X user's root directory
 cd ~
@@ -158,8 +159,7 @@ subl .laptop.local
 
 Your `~/.laptop.local` is run at the end of the `mac` script.
 Put your customizations there. You can use the `.laptop.local` you downloaded
-above to get started. It lets you install the following tools
-(commented out by default):
+above to get started. It lets you install the following tools:
 
 * [Atom] - GitHub's open source text editor
 * [CloudApp] for sharing screenshots and making an animated GIF from a video
@@ -171,27 +171,44 @@ above to get started. It lets you install the following tools
 [Firefox]: https://www.mozilla.org/en-US/firefox/new/
 [iTerm2]: http://iterm2.com/
 
-To install any of the above tools, uncomment them from `.laptop.local` by
-removing the `#`. For example, to install CloudApp, your `.laptop.local`
-should look like this:
-
-```sh
-#!/bin/sh
-
-# brew_cask_install 'atom'
-brew_cask_install 'cloud'
-# brew_cask_install 'firefox'
-# brew_cask_install 'iterm2'
-```
-
 Write your customizations such that they can be run safely more than once.
 See the `mac` script for examples.
 
-Laptop functions such as `fancy_echo`, `brew_install_or_upgrade`,
-`gem_install_or_update`, and `brew_cask_install` can be used in your
-`~/.laptop.local`.
+Laptop functions such as `fancy_echo`, and `gem_install_or_update` can be used
+in your `~/.laptop.local`.
 
+Editing the `Brewfile`
+----------------------
+Most of what the script installs is listed in the `Brewfile`. If you don't want
+the script to install certain tools, you can remove them from the `Brewfile`.
 
+How to manage background services (such as Postgres)
+----------------------------------------------------------
+The script does not automatically launch these services after installation
+because you might not need or want them to be running. With Homebrew Services,
+starting, stopping, or restarting these services is as easy as:
+
+```
+brew services start|stop|restart [name of service]
+```
+
+For example:
+
+```
+brew services start postgresql
+```
+
+To see a list of all installed services:
+
+```
+brew services list
+```
+
+To start all services at once:
+
+```
+brew services start --all
+```
 
 Credits
 -------
