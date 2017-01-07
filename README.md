@@ -75,6 +75,7 @@ What it sets up
 ---------------
 
 * [Bundler] for managing Ruby gems
+* [chruby] for managing [Ruby] versions
 * [Flux] for adjusting your Mac's display color so you can sleep better
 * [GitHub Desktop] for setting up your SSH keys automatically
 * [Heroku Toolbelt] for deploying and managing Heroku apps
@@ -84,11 +85,12 @@ What it sets up
 * [hub] for interacting with the GitHub API
 * [PhantomJS] for headless website testing
 * [Postgres] for storing relational data
-* [RVM] for managing Ruby versions (includes the latest [Ruby])
+* [ruby-install] for installing different versions of Ruby
 * [Sublime Text 3] for coding all the things
 * [Zsh] as your shell
 
 [Bundler]: http://bundler.io/
+[chruby]: https://github.com/postmodern/chruby
 [Flux]: https://justgetflux.com/
 [GitHub Desktop]: https://desktop.github.com/
 [Heroku Toolbelt]: https://toolbelt.heroku.com/
@@ -99,7 +101,7 @@ What it sets up
 [PhantomJS]: http://phantomjs.org/
 [Postgres]: http://www.postgresql.org/
 [Ruby]: https://www.ruby-lang.org/en/
-[RVM]: https://github.com/wayneeseguin/rvm
+[ruby-install]: https://github.com/postmodern/ruby-install
 [Sublime Text 3]: http://www.sublimetext.com/3
 [Zsh]: http://www.zsh.org/
 
