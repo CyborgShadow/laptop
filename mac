@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Welcome to the monfresh laptop script!
 # Be prepared to turn your laptop (or desktop)
@@ -15,17 +15,35 @@ append_to_file() {
   local file="$1"
   local text="$2"
 
-  if [ "$file" = "$HOME/.zshrc" ]; then
-    if [ -w "$HOME/.zshrc.local" ]; then
-      file="$HOME/.zshrc.local"
-    else
-      file="$HOME/.zshrc"
-    fi
-  fi
-
   if ! grep -qs "^$text$" "$file"; then
     printf "\n%s\n" "$text" >> "$file"
   fi
+}
+
+create_zshrc_and_set_it_as_shell_file() {
+  if [ ! -f "$HOME/.zshrc" ]; then
+    touch "$HOME/.zshrc"
+  fi
+
+  shell_file="$HOME/.zshrc"
+}
+
+create_bash_profile_and_set_it_as_shell_file() {
+  if [ ! -f "$HOME/.bash_profile" ]; then
+    touch "$HOME/.bash_profile"
+  fi
+
+  shell_file="$HOME/.bash_profile"
+}
+
+change_shell_to_zsh() {
+  fancy_echo "Please enter your password to continue."
+  echo "Note that there won't be visual feedback when you type your password."
+  echo "Type it slowly and press return, or press control-c to cancel the switch to zsh and exit the script."
+  create_zshrc_and_set_it_as_shell_file
+  chsh -s "$(which zsh)"
+  echo "Note that you can always switch back to ${bold}bash${normal} if you change your mind."
+  echo "The instructions for changing shells manually are available in the README."
 }
 
 # shellcheck disable=SC2154
@@ -37,18 +55,44 @@ if [ ! -d "$HOME/.bin/" ]; then
   mkdir "$HOME/.bin"
 fi
 
-if [ ! -f "$HOME/.zshrc" ]; then
-  touch "$HOME/.zshrc"
-fi
-
-# shellcheck disable=SC2016
-append_to_file "$HOME/.zshrc" 'export PATH="$HOME/.bin:$PATH"'
-
 case "$SHELL" in
-  */zsh) : ;;
+  */zsh) :
+    create_zshrc_and_set_it_as_shell_file
+    ;;
   *)
-    fancy_echo "Changing your shell to zsh ..."
-      chsh -s "$(which zsh)"
+    create_bash_profile_and_set_it_as_shell_file
+    if [ -z "$CI" ]; then
+      bold=$(tput bold)
+      normal=$(tput sgr0)
+      echo "Want to switch your shell from the default ${bold}bash${normal} to ${bold}zsh${normal}?"
+      echo "Both work fine for development, and ${bold}zsh${normal} has some extra "
+      echo "features for customization and tab completion."
+      echo "If you aren't sure or don't care, we recommend ${bold}zsh${normal}."
+      echo -n "Press ${bold}y${normal} to switch to zsh, ${bold}n${normal} to keep bash: "
+      read -r -n 1 response
+      if [ "$response" = "y" ]; then
+        fancy_echo "=== Getting ready to change your shell to zsh. ==="
+        if ! grep -qs "$(which zsh)" /etc/shells; then
+          echo "It looks like your version of zsh is missing from ${bold}/etc/shells${normal}."
+          echo "It must be added there manually before your shell can be changed."
+          echo "Open ${bold}/etc/shells${normal} with your favorite text editor,"
+          echo "then add ${bold}$(which zsh)${normal} in a new line and save the file."
+          echo -n "Once you've added it, press ${bold}y${normal} to continue, or ${bold}n${normal} to cancel: "
+          read -r -n 1 response
+          if [ "$response" = "y" ]; then
+            change_shell_to_zsh
+          else
+            fancy_echo "Shell will not be changed."
+          fi
+        else
+          change_shell_to_zsh
+        fi
+      else
+        fancy_echo "Shell will not be changed."
+      fi
+    else
+      fancy_echo "CI System detected, will not change shells"
+    fi
     ;;
 esac
 
@@ -72,13 +116,16 @@ app_is_installed() {
   find /Applications -iname "$app_name*" -maxdepth 1 | egrep '.*' > /dev/null
 }
 
+# shellcheck disable=SC2016
+append_to_file "$shell_file" 'export PATH="$HOME/.bin:$PATH"'
+
 if ! command -v brew >/dev/null; then
   fancy_echo "Installing Homebrew ..."
     curl -fsS \
       'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 
     # shellcheck disable=SC2016
-    append_to_file "$HOME/.zshrc" 'export PATH="/usr/local/bin:$PATH"'
+    append_to_file "$shell_file" 'export PATH="/usr/local/bin:$PATH"'
 else
   fancy_echo "Homebrew already installed. Skipping ..."
 fi
@@ -105,7 +152,7 @@ fancy_echo "Installing formulas and casks from the Brewfile ..."
 brew bundle
 
 # shellcheck disable=SC2016
-append_to_file "$HOME/.zshrc" 'eval "$(hub alias -s)"'
+append_to_file "$shell_file" 'eval "$(hub alias -s)"'
 
 append_to_file "$HOME/.gemrc" 'gem: --no-document'
 
@@ -113,6 +160,7 @@ if ! command -v rbenv >/dev/null; then
   if ! command -v rvm >/dev/null; then
     fancy_echo 'Installing RVM and the latest Ruby...'
     curl -L https://get.rvm.io | bash -s head --ruby --auto-dotfiles --autolibs=enable
+    # shellcheck source=/dev/null
     . ~/.rvm/scripts/rvm
   else
     local_version="$(rvm -v 2> /dev/null | awk '$2 != ""{print $2}')"
@@ -138,6 +186,7 @@ bundle config --global jobs $((number_of_cores - 1))
 fancy_echo '...Finished Ruby installation checks.'
 
 if [ -f "$HOME/.laptop.local" ]; then
+  # shellcheck source=/dev/null
   . "$HOME/.laptop.local"
 fi
 
@@ -147,11 +196,11 @@ append_to_file "$HOME/.rvm/gemsets/global.gems" 'bundler'
 # display pwd in orange, current ruby version or gemset in green,
 # and set prompt character to $
 # shellcheck disable=SC2016
-append_to_file "$HOME/.zshrc" 'precmd () { PS1="%{%F{166}%}[%~] %{%F{65}%}$(rvm-prompt) %{%f%}$ " }'
+append_to_file "$shell_file" 'precmd () { PS1="%{%F{166}%}[%~] %{%F{65}%}$(rvm-prompt) %{%f%}$ " }'
 
 # display directories and files in different colors when running ls
-append_to_file "$HOME/.zshrc" 'export CLICOLOR=1;'
-append_to_file "$HOME/.zshrc" 'export LSCOLORS=exfxcxdxbxegedabagacad;'
+append_to_file "$shell_file" 'export CLICOLOR=1;'
+append_to_file "$shell_file" 'export LSCOLORS=exfxcxdxbxegedabagacad;'
 
 if app_is_installed 'GitHub'; then
   fancy_echo "It looks like you've already configured your GitHub SSH keys."

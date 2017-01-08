@@ -18,7 +18,8 @@ Requirements
 
 I support clean installations of these operating systems:
 
-* [OS X El Capitan (10.11)](https://www.apple.com/osx/)
+* [macOS Sierra](https://www.apple.com/macos/sierra/) (10.12)
+* OS X El Capitan (10.11)
 * OS X Yosemite (10.10)
 * OS X Mavericks (10.9)
 
@@ -209,6 +210,19 @@ To start all services at once:
 ```
 brew services start --all
 ```
+
+How to switch your shell back to bash from zsh (or vice versa)
+--------------------------------------------------------------
+1. Find out which shell you're currently running: `echo $SHELL`
+2. Find out the location of the shell you want to switch to. For example, if
+   you want to switch to `bash`, run `which bash`.
+3. Verify if the shell location is included in `/etc/shells`.
+   Run `cat /etc/shells` to see the contents of the file.
+4. If the location of the shell is included, run `chsh -s [the location of the shell]`.
+   For example, if `which bash` returned `/bin/bash`, you would run `chsh -s /bin/bash`.
+
+   If the location of the shell is not in `/etc/shells`, add it, then run the `chsh` command.
+   If you have Sublime Text, you can open the file by running `subl /etc/shells`.
 
 Credits
 -------
