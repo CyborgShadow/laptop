@@ -95,13 +95,11 @@ What it sets up
 * [Spectacle] Window Manager
 * [Vagrant] Local VM manager
 * [Atom] A pretty and full-featured visual editor
-* [Cloud] Apple Cloud
 * [pdftk] A handy pdf manipulator
 * [Google Hangouts] Google's Communication tool
 * [Google Drive] Google's Cloud Storage
 * [VLC media player] A nice media player
 * [Cheatsheet] Handy shortcuts by long hold command
-* [Asepsis] Solves the .DS_Store file problem on Mac 
 * [Zsh] as your shell (if you opt in)
 
 [Flux]: https://justgetflux.com/
@@ -129,13 +127,11 @@ What it sets up
 [Spectacle]: https://www.spectacleapp.com/
 [Vagrant]: https://www.vagrantup.com/
 [Atom]: https://atom.io/
-[Cloud]: https://www.apple.com/icloud/
 [pdftk]: https://linux.die.net/man/1/pdftk
 [Google Hangouts]: https://hangouts.google.com/
 [Google Drive]: https://drive.google.com/
 [VLC media player]: http://www.videolan.org/vlc/
 [Cheatsheet]: https://www.mediaatelier.com/CheatSheet/
-[Asepsis]: https://asepsis.binaryage.com/
 [Zsh]: http://www.zsh.org/
 
 It should take less than 30 minutes to install (depends on your machine and
