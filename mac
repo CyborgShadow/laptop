@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Welcome to the monfresh laptop script!
+# Welcome to the cyborgshadow laptop script!
 # Be prepared to turn your laptop (or desktop)
 # into an awesome development machine.
 
@@ -114,6 +114,15 @@ gem_install_or_update() {
   fi
 }
 
+pip_install_or_update() {
+  if pip list | grep "^$1 ("; then
+    fancy_echo "Updating %s ..." "$1"
+    pip install --upgrade "$@"
+  else
+    fancy_echo "Installing %s ..." "$1"
+    pip install "$@"
+}
+
 app_is_installed() {
   local app_name
   app_name=$(echo "$1" | cut -d'-' -f1)
@@ -130,10 +139,17 @@ switch_to_latest_ruby() {
   chruby "ruby-$(latest_installed_ruby)"
 }
 
-append_to_file "$shell_file" "alias laptop='bash <(curl -s https://raw.githubusercontent.com/monfresh/laptop/master/laptop)'"
+append_to_file "$shell_file" "alias laptop='bash <(curl -s https://raw.githubusercontent.com/cyborgshadow/laptop/master/laptop)'"
 
 # shellcheck disable=SC2016
 append_to_file "$shell_file" 'export PATH="$HOME/.bin:$PATH"'
+
+fancy_echo "Checking for xcode..."
+pkgutil --pkg-info=com.apple.pkg.CLTools_Executables > /dev/null
+if [[ $? -eq 0 ]]; then 
+  fancy_echo "xcode not found. Installing xcode...";
+  xcode-select --install
+fi;
 
 if ! command -v brew >/dev/null; then
   fancy_echo "Installing Homebrew ..."
@@ -145,6 +161,7 @@ if ! command -v brew >/dev/null; then
 else
   fancy_echo "Homebrew already installed. Skipping ..."
 fi
+
 
 # Remove brew-cask since it is now installed as part of brew tap caskroom/cask.
 # See https://github.com/caskroom/homebrew-cask/releases/tag/v0.60.0
@@ -176,6 +193,10 @@ else
   echo "in which case, you can ignore these errors."
 fi
 
+fancy_echo "Installing python dependencies ..."
+pip_install_or_update 'pyyaml'
+pip_install_or_update 'boto3'
+
 # shellcheck disable=SC2016
 append_to_file "$shell_file" 'eval "$(hub alias -s)"'
 
@@ -185,7 +206,7 @@ if command -v rbenv >/dev/null || command -v rvm >/dev/null; then
   fancy_echo 'We recommend chruby and ruby-install over RVM or rbenv'
 else
   if ! brew_is_installed "chruby"; then
-    fancy_echo 'Installing chruby, ruby-install, and the latest Ruby...'
+    fancy_echo 'Installing chruby, ruby-install, and the latest Ruby ...'
 
     brew bundle --file=- <<EOF
     brew 'chruby'
@@ -223,7 +244,18 @@ fi
 fancy_echo 'Updating Rubygems...'
 gem update --system
 
+fancy_echo "Installing useful gem packages..."
 gem_install_or_update 'bundler'
+gem_install_or_update 'berkshelf'
+gem_install_or_update 'chefspec'
+gem_install_or_update 'foodcritic'
+gem_install_or_update 'test-kitchen'
+gem_install_or_update 'kitchen-vagrant'
+gem_install_or_update 'knife-block'
+gem_install_or_update 'rubocop'
+gem_install_or_update 'thor-foodcritic'
+gem_install_or_update 'encrypt_data_bag'
+gem_install_or_update 'knife-spork'
 
 fancy_echo "Configuring Bundler ..."
 number_of_cores=$(sysctl -n hw.ncpu)
@@ -245,7 +277,6 @@ if [ -z "$CI" ] && no_zsh_frameworks && no_prompt_customizations_in_shell_file; 
   if [ "$response" = "y" ]; then
     if ! grep -qs "prompt_ruby_info()" "$shell_file"; then
       cat <<EOT >> "$shell_file"
-
   prompt_ruby_info() {
     if [ -f ".ruby-version" ]; then
       cat .ruby-version
@@ -281,6 +312,27 @@ fi
 if [ -f "$HOME/.laptop.local" ]; then
   # shellcheck source=/dev/null
   . "$HOME/.laptop.local"
+fi
+
+fancy_echo "Configuring Sublime Text"
+fancy_echo "Adding app shortcut called 'stext'"
+if [ ! -f "/usr/local/bin/stext" ]; then
+  ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/stext /usr/local/bin/stext
+fi
+
+fancy_echo "Configuring your Golang ENV"
+fancy_echo "Your GOPATH will be $HOME/go"
+append_to_file "$shell_file" 'export GOPATH="$HOME/go"'
+append_to_file "$shell_file" 'export GOROOT="/usr/local/opt/go/libexec"'
+append_to_file "$shell_file" 'export PATH="$PATH:$GOPATH/bin"'
+append_to_file "$shell_file" 'export PATH="$PATH:$GOROOT/bin"'
+
+if [ ! -d $GOPATH ]; then
+  fancy_echo "Making Go Folders"
+  mkdir -p $GOPATH $GOPATH/src $GOPATH/pkg $GOPATH/bin
+  fancy_echo "Getting some extremely common basic go packages: gorilla/mux, stretchr/testify"
+  go get -u github.com/gorilla/mux
+  go get -u github.com/stretchr/testify
 fi
 
 fancy_echo 'All done!'

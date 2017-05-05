@@ -1,6 +1,5 @@
 Laptop
 ======
-[![Build Status](https://travis-ci.org/monfresh/laptop.svg)](https://travis-ci.org/monfresh/laptop)
 
 Laptop is a script to set up an OS X computer for web development, and to keep
 it up to date.
@@ -9,10 +8,9 @@ It can be run multiple times on the same machine safely. It installs,
 upgrades, or skips packages based on what is already installed on the machine.
 
 This particular version of the script is geared toward beginners who want to
-set up a Ruby on Rails environment on their Mac. More advanced users can
-easily [customize](#customize-in-laptoplocal) the script to install additional
-tools. To see an example of a more advanced script, check out
-[18F/laptop](https://github.com/18F/laptop).
+set up a Go/Python/Ruby/Chef environment on their Mac. More advanced users can
+easily customize the script to install additional
+tools. 
 
 Requirements
 ------------
@@ -39,10 +37,10 @@ and once it appears, press `return` to launch it.
 In your Terminal window, copy and paste the command below, then press `return`.
 
 ```sh
-bash <(curl -s https://raw.githubusercontent.com/monfresh/laptop/master/laptop)
+bash <(curl -s https://raw.githubusercontent.com/cyborgshadow/laptop/master/laptop)
 ```
 
-The [script](https://github.com/monfresh/laptop/blob/master/mac) itself is
+The [script](https://github.com/cyborgshadow/laptop/blob/master/mac) itself is
 available in this repo for you to review if you want to see what it does
 and how it works.
 
@@ -54,14 +52,11 @@ need to push code to GitHub.
 
 **Once the script is done, quit and relaunch Terminal.**
 
-More [detailed instructions with a video][video] are available in the Wiki.
-
 It is highly recommended to run the script regularly to keep your computer up
 to date. Once the script has been installed, you'll be able to run it at your
 convenience by typing `laptop` and pressing `return` in your Terminal.
 
 [Spotlight]: https://support.apple.com/en-us/HT204014
-[video]: https://github.com/monfresh/laptop/wiki/Detailed-installation-instructions-with-video
 
 Debugging
 ---------
@@ -69,44 +64,81 @@ Debugging
 Your last Laptop run will be saved to a file called `laptop.log` in your home
 folder. Read through it to see if you can debug the issue yourself. If not,
 copy the entire contents of `laptop.log` into a
-[new GitHub Issue](https://github.com/monfresh/laptop/issues/new) for me.
+[new GitHub Issue](https://github.com/cyborgshadow/laptop/issues/new) for me.
 Or, attach the whole log file as an attachment.
 
 What it sets up
 ---------------
 
-* [Bundler] for managing Ruby gems
-* [chruby] for managing [Ruby] versions
 * [Flux] for adjusting your Mac's display color so you can sleep better
-* [GitHub Desktop] for setting up your SSH keys automatically
-* [Heroku Toolbelt] for deploying and managing Heroku apps
 * [Homebrew] for managing operating system libraries
 * [Homebrew Cask] for quickly installing Mac apps from the command line
 * [Homebrew Services] so you can easily stop, start, and restart services
 * [hub] for interacting with the GitHub API
-* [PhantomJS] for headless website testing
-* [Postgres] for storing relational data
-* [ruby-install] for installing different versions of Ruby
 * [Sublime Text 3] for coding all the things
+* [golang] for coding in Go
+* [xcode] for compiling things when necessary
+* [watch] for running commands repeatedly and parsing output
+* [tmux] for Terminal multiplexing
+* [curl] with openssl
+* [python] for coding in python
+* [pyenv] for a simple python environment setup
+* [docker] for container virtualization
+* [boot2docker] Lightweight distro for docker containers
+* [docker-toolbox] for easy access to swarm, compose, etc
+* [iTerm2] for tmux friendly terminal
+* [Google Chrome] Yet another browser
+* [Firefox] Yet another browser
+* [Dropbox] For cloud file access
+* [Caffeine] for keeping your mac awake
+* [TotalFinder] Improved finder for Mac
+* [Spectacle] Window Manager
+* [Vagrant] Local VM manager
+* [Atom] A pretty and full-featured visual editor
+* [Cloud] Apple Cloud
+* [pdftk] A handy pdf manipulator
+* [Google Hangouts] Google's Communication tool
+* [Google Drive] Google's Cloud Storage
+* [VLC media player] A nice media player
+* [Cheatsheet] Handy shortcuts by long hold command
+* [Asepsis] Solves the .DS_Store file problem on Mac 
 * [Zsh] as your shell (if you opt in)
 
-[Bundler]: http://bundler.io/
-[chruby]: https://github.com/postmodern/chruby
 [Flux]: https://justgetflux.com/
-[GitHub Desktop]: https://desktop.github.com/
-[Heroku Toolbelt]: https://toolbelt.heroku.com/
 [Homebrew]: http://brew.sh/
 [Homebrew Cask]: http://caskroom.io/
 [Homebrew Services]: https://github.com/Homebrew/homebrew-services
 [hub]: https://github.com/github/hub
-[PhantomJS]: http://phantomjs.org/
-[Postgres]: http://www.postgresql.org/
-[Ruby]: https://www.ruby-lang.org/en/
-[ruby-install]: https://github.com/postmodern/ruby-install
 [Sublime Text 3]: http://www.sublimetext.com/3
+[golang]: https://golang.org/
+[xcode]: https://developer.apple.com/xcode/
+[watch]: https://linux.die.net/man/1/watch
+[tmux]: https://tmux.github.io/
+[curl]: https://linux.die.net/man/1/curl
+[python]: https://www.python.org/
+[pyenv]: https://github.com/pyenv/pyenv
+[docker]: https://www.docker.com/
+[boot2docker]: http://boot2docker.io/
+[docker-toolbox]: https://www.docker.com/products/docker-toolbox
+[iTerm2]: https://iterm2.com/
+[Google Chrome]: https://www.google.com/intl/en/chrome/browser/
+[Firefox]: https://www.mozilla.org/en-US/firefox/new/
+[Dropbox]: https://www.dropbox.com/
+[Caffeine]: http://lightheadsw.com/caffeine/
+[TotalFinder]: https://totalfinder.binaryage.com/
+[Spectacle]: https://www.spectacleapp.com/
+[Vagrant]: https://www.vagrantup.com/
+[Atom]: https://atom.io/
+[Cloud]: https://www.apple.com/icloud/
+[pdftk]: https://linux.die.net/man/1/pdftk
+[Google Hangouts]: https://hangouts.google.com/
+[Google Drive]: https://drive.google.com/
+[VLC media player]: http://www.videolan.org/vlc/
+[Cheatsheet]: https://www.mediaatelier.com/CheatSheet/
+[Asepsis]: https://asepsis.binaryage.com/
 [Zsh]: http://www.zsh.org/
 
-It should take less than 15 minutes to install (depends on your machine and
+It should take less than 30 minutes to install (depends on your machine and
 internet connection).
 
 The script also lightly customizes your shell prompt so that it displays your
@@ -140,7 +172,7 @@ If you want to try out different prompt colors other than orange and green,
 open your `.zshrc` or `.bash_profile` in Sublime Text:
 
 ```sh
-subl ~/.zshrc
+stext ~/.zshrc
 ```
 
 Then in the line that starts with `precmd`, replace `{166}` and `{65}` with
@@ -155,39 +187,25 @@ Customize in `~/.laptop.local` and `~/Brewfile.local`
 cd ~
 
 # Download the sample files to your computer
-curl --remote-name https://raw.githubusercontent.com/monfresh/laptop/master/.laptop.local
-curl --remote-name https://raw.githubusercontent.com/monfresh/laptop/master/Brewfile.local
+curl --remote-name https://raw.githubusercontent.com/cyborgshadow/laptop/master/.laptop.local
+curl --remote-name https://raw.githubusercontent.com/cyborgshadow/laptop/master/Brewfile.local
 
 # open the files in Sublime Text
-subl .laptop.local
-subl Brewfile.local
+stext .laptop.local
+stext Brewfile.local
 ```
 
 Your `~/.laptop.local` is run at the end of the `mac` script.
 Put your customizations there. If you want to install additional
 tools or Mac apps with Homebrew, add them to your `~/Brewfile.local`.
-You can use the `.laptop.local` and `Brewfile.local` you downloaded
-above to get started. It lets you install the following tools and Mac apps:
-
-* [Atom] - GitHub's open source text editor
-* [CloudApp] for sharing screenshots and making an animated GIF from a video
-* [Firefox] for testing your Rails app on a browser other than Chrome or Safari
-* [iTerm2] - an awesome replacement for the OS X Terminal
-* [Redis] for storing key-value data
-
-[Atom]: https://atom.io/
-[CloudApp]: http://getcloudapp.com/
-[Firefox]: https://www.mozilla.org/en-US/firefox/new/
-[iTerm2]: http://iterm2.com/
-[Redis]: http://redis.io/
 
 Write your customizations such that they can be run safely more than once.
 See the `mac` script for examples.
 
-Laptop functions such as `fancy_echo`, and `gem_install_or_update` can be used
+Laptop functions such as `fancy_echo`, `pip_install_or_update` and `gem_install_or_update` can be used
 in your `~/.laptop.local`.
 
-How to manage background services (such as Postgres)
+How to manage background services (such as MySQL)
 ----------------------------------------------------------
 The script does not automatically launch these services after installation
 because you might not need or want them to be running. With Homebrew Services,
@@ -200,7 +218,7 @@ brew services start|stop|restart [name of service]
 For example:
 
 ```
-brew services start postgresql
+brew services start mysql
 ```
 
 To see a list of all installed services:
@@ -238,7 +256,7 @@ This laptop script is inspired by
 
 thoughtbot's original work remains covered under an [MIT License](https://github.com/thoughtbot/laptop/blob/c997c4fb5a986b22d6c53214d8f219600a4561ee/LICENSE).
 
-My work on this project is in the worldwide [public domain](LICENSE.md), as are contributions to my project. As stated in [CONTRIBUTING](CONTRIBUTING.md):
+My work on this project is in the worldwide [public domain](LICENSE.md), as are contributions to my project.
 
 > This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 >

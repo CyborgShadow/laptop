@@ -1,5 +1,1 @@
-cask 'atom'
-cask 'cloud'
-cask 'firefox'
-cask 'iterm2'
-brew 'redis'
+

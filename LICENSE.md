@@ -1,4 +1,4 @@
-This monfresh project is originally based on [thoughtbot's laptop project](https://github.com/thoughtbot/laptop).
+This cyborgshadow project is based on [monfresh's](https://github.com/monfresh/laptop), which is originally based on [thoughtbot's laptop project](https://github.com/thoughtbot/laptop).
 
 ## thoughtbot's work
 
