@@ -314,9 +314,9 @@ if [ -f "$HOME/.laptop.local" ]; then
   . "$HOME/.laptop.local"
 fi
 
-fancy_echo "Configuring Sublime Text"
-fancy_echo "Adding app shortcut called 'stext'"
 if [ ! -f "/usr/local/bin/stext" ]; then
+  fancy_echo "Configuring Sublime Text"
+  fancy_echo "Adding app shortcut called 'stext'"
   ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/stext /usr/local/bin/stext
 fi
 
