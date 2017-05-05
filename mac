@@ -46,6 +46,14 @@ change_shell_to_zsh() {
   echo "The instructions for changing shells manually are available in the README."
 }
 
+# Do the xcode section before we enable a trap for non zero exit codes
+fancy_echo "Checking for xcode..."
+pkgutil --pkg-info=com.apple.pkg.CLTools_Executables 2&> /dev/null
+if [[ $? -eq 0 ]]; then
+  fancy_echo "xcode not found. Installing xcode...";
+  xcode-select --install
+fi;
+
 # shellcheck disable=SC2154
 trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
 
@@ -144,13 +152,6 @@ append_to_file "$shell_file" "alias laptop='bash <(curl -s https://raw.githubuse
 
 # shellcheck disable=SC2016
 append_to_file "$shell_file" 'export PATH="$HOME/.bin:$PATH"'
-
-fancy_echo "Checking for xcode..."
-pkgutil --pkg-info=com.apple.pkg.CLTools_Executables 2&> /dev/null
-if [[ $? -eq 0 ]]; then 
-  fancy_echo "xcode not found. Installing xcode...";
-  xcode-select --install
-fi;
 
 if ! command -v brew >/dev/null; then
   fancy_echo "Installing Homebrew ..."
