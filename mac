@@ -321,6 +321,7 @@ if [ ! -f "/usr/local/bin/stext" ]; then
 fi
 
 fancy_echo "Configuring your Golang ENV"
+GOPATH=$HOME/go
 fancy_echo "Your GOPATH will be $HOME/go"
 append_to_file "$shell_file" 'export GOPATH="$HOME/go"'
 append_to_file "$shell_file" 'export GOROOT="/usr/local/opt/go/libexec"'

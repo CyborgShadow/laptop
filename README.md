@@ -87,15 +87,12 @@ What it sets up
 * [boot2docker] Lightweight distro for docker containers
 * [docker-toolbox] for easy access to swarm, compose, etc
 * [iTerm2] for tmux friendly terminal
-* [Google Chrome] Yet another browser
-* [Firefox] Yet another browser
 * [Dropbox] For cloud file access
 * [Caffeine] for keeping your mac awake
 * [TotalFinder] Improved finder for Mac
 * [Spectacle] Window Manager
 * [Vagrant] Local VM manager
 * [Atom] A pretty and full-featured visual editor
-* [pdftk] A handy pdf manipulator
 * [Google Hangouts] Google's Communication tool
 * [Google Drive] Google's Cloud Storage
 * [VLC media player] A nice media player
@@ -119,15 +116,12 @@ What it sets up
 [boot2docker]: http://boot2docker.io/
 [docker-toolbox]: https://www.docker.com/products/docker-toolbox
 [iTerm2]: https://iterm2.com/
-[Google Chrome]: https://www.google.com/intl/en/chrome/browser/
-[Firefox]: https://www.mozilla.org/en-US/firefox/new/
 [Dropbox]: https://www.dropbox.com/
 [Caffeine]: http://lightheadsw.com/caffeine/
 [TotalFinder]: https://totalfinder.binaryage.com/
 [Spectacle]: https://www.spectacleapp.com/
 [Vagrant]: https://www.vagrantup.com/
 [Atom]: https://atom.io/
-[pdftk]: https://linux.die.net/man/1/pdftk
 [Google Hangouts]: https://hangouts.google.com/
 [Google Drive]: https://drive.google.com/
 [VLC media player]: http://www.videolan.org/vlc/
