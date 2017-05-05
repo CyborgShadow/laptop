@@ -146,7 +146,7 @@ append_to_file "$shell_file" "alias laptop='bash <(curl -s https://raw.githubuse
 append_to_file "$shell_file" 'export PATH="$HOME/.bin:$PATH"'
 
 fancy_echo "Checking for xcode..."
-pkgutil --pkg-info=com.apple.pkg.CLTools_Executables > /dev/null
+pkgutil --pkg-info=com.apple.pkg.CLTools_Executables 2&> /dev/null
 if [[ $? -eq 0 ]]; then 
   fancy_echo "xcode not found. Installing xcode...";
   xcode-select --install
