@@ -121,6 +121,7 @@ pip_install_or_update() {
   else
     fancy_echo "Installing %s ..." "$1"
     pip install "$@"
+  fi
 }
 
 app_is_installed() {
