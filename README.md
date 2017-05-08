@@ -84,12 +84,10 @@ What it sets up
 * [python] for coding in python
 * [pyenv] for a simple python environment setup
 * [docker] for container virtualization
-* [boot2docker] Lightweight distro for docker containers
 * [docker-toolbox] for easy access to swarm, compose, etc
 * [iTerm2] for tmux friendly terminal
 * [Dropbox] For cloud file access
 * [Caffeine] for keeping your mac awake
-* [TotalFinder] Improved finder for Mac
 * [Spectacle] Window Manager
 * [Vagrant] Local VM manager
 * [Atom] A pretty and full-featured visual editor
@@ -98,6 +96,7 @@ What it sets up
 * [VLC media player] A nice media player
 * [Cheatsheet] Handy shortcuts by long hold command
 * [Zsh] as your shell (if you opt in)
+* [chefdk] for developing against Chef
 
 [Flux]: https://justgetflux.com/
 [Homebrew]: http://brew.sh/
@@ -113,7 +112,7 @@ What it sets up
 [python]: https://www.python.org/
 [pyenv]: https://github.com/pyenv/pyenv
 [docker]: https://www.docker.com/
-[boot2docker]: http://boot2docker.io/
+[chefdk]: https://downloads.chef.io/chefdk
 [docker-toolbox]: https://www.docker.com/products/docker-toolbox
 [iTerm2]: https://iterm2.com/
 [Dropbox]: https://www.dropbox.com/
