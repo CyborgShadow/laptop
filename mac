@@ -258,6 +258,7 @@ gem_install_or_update 'rubocop'
 gem_install_or_update 'thor-foodcritic'
 gem_install_or_update 'encrypt_data_bag'
 gem_install_or_update 'knife-spork'
+gem_install_or_update 'sensu-cli'
 
 fancy_echo "Configuring Bundler ..."
 number_of_cores=$(sysctl -n hw.ncpu)
