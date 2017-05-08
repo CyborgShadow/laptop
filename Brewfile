@@ -24,11 +24,8 @@ brew 'hub'
 
 brew 'golang'
 
-brew 'docker'
-
-brew 'boot2docker'
-
 cask 'atom'
+cask 'docker'
 cask 'docker-toolbox'
 cask 'flux'
 cask 'sublime-text'
