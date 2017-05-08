@@ -97,7 +97,11 @@ What it sets up
 * [Cheatsheet] Handy shortcuts by long hold command
 * [Zsh] as your shell (if you opt in)
 * [chefdk] for developing against Chef
+* [macdown] for markdown editing
+* [jq] For cli JSON formatting
 
+[macdown]: https://macdown.uranusjr.com/
+[jq]: https://github.com/stedolan/jq
 [Flux]: https://justgetflux.com/
 [Homebrew]: http://brew.sh/
 [Homebrew Cask]: http://caskroom.io/

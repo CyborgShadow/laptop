@@ -24,6 +24,9 @@ brew 'hub'
 
 brew 'golang'
 
+brew 'jq'
+
+cask 'macdown'
 cask 'atom'
 cask 'docker'
 cask 'docker-toolbox'
