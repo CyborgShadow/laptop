@@ -333,8 +333,11 @@ if [ ! -d $GOPATH ]; then
   fancy_echo "Making Go Folders"
   mkdir -p $GOPATH $GOPATH/src $GOPATH/pkg $GOPATH/bin
   fancy_echo "Getting some extremely common basic go packages: gorilla/mux, stretchr/testify"
-  go get -u github.com/gorilla/mux
-  go get -u github.com/stretchr/testify
 fi
+
+fancy_echo "Updating go packages ... "
+go get -u github.com/gorilla/mux
+go get -u github.com/stretchr/testify
+go get -u github.com/govend/govend
 
 fancy_echo 'All done!'
