@@ -99,6 +99,7 @@ What it sets up
 * [chefdk] for developing against Chef
 * [macdown] for markdown editing
 * [jq] For cli JSON formatting
+* [Google Cloud SDK] for development of google cloud apps
 
 [macdown]: https://macdown.uranusjr.com/
 [jq]: https://github.com/stedolan/jq
@@ -130,6 +131,7 @@ What it sets up
 [VLC media player]: http://www.videolan.org/vlc/
 [Cheatsheet]: https://www.mediaatelier.com/CheatSheet/
 [Zsh]: http://www.zsh.org/
+[Google Cloud SDK]: https://cloud.google.com/sdk/
 
 It should take less than 30 minutes to install (depends on your machine and
 internet connection).
