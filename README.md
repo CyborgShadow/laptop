@@ -92,7 +92,7 @@ What it sets up
 * [Vagrant] Local VM manager
 * [Atom] A pretty and full-featured visual editor
 * [Google Hangouts] Google's Communication tool
-* [Google Drive] Google's Cloud Storage
+* [Google Backup And Sync] Google's Cloud Storage (Replaces Google Drive)
 * [VLC media player] A nice media player
 * [Cheatsheet] Handy shortcuts by long hold command
 * [Zsh] as your shell (if you opt in)
@@ -127,7 +127,7 @@ What it sets up
 [Vagrant]: https://www.vagrantup.com/
 [Atom]: https://atom.io/
 [Google Hangouts]: https://hangouts.google.com/
-[Google Drive]: https://drive.google.com/
+[Google Backup And Sync]: https://www.google.com/drive/download/
 [VLC media player]: http://www.videolan.org/vlc/
 [Cheatsheet]: https://www.mediaatelier.com/CheatSheet/
 [Zsh]: http://www.zsh.org/
