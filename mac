@@ -123,7 +123,7 @@ gem_install_or_update() {
 }
 
 pip_install_or_update() {
-  if pip list | grep "^$1 ("; then
+  if pip list --format=columns | grep "^$1 ("; then
     fancy_echo "Updating %s ..." "$1"
     pip install --upgrade "$@"
   else
@@ -196,8 +196,6 @@ else
 fi
 
 fancy_echo "Installing python dependencies ..."
-pip_install_or_update 'pyyaml'
-pip_install_or_update 'boto3'
 
 # shellcheck disable=SC2016
 append_to_file "$shell_file" 'eval "$(hub alias -s)"'
